@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th width="50%">test1</th>
+        <th width="50%">test2</th>
+    </tr>
+    <tr>
+        <td>TEST 1</td>
+        <td>TEST 2</td>
+    </tr>    
+</table>
+
+<input type="button" onclick="save()" value="Button" />
+
+@section Scripts{ 
+<script type="text/javascript">
+    $(document).ready(function () {
+            alert("Hello world!");
+    });
+
+
+    var Login = {
+        Username: "Wira",
+        Password: "Wira"
+    };
+    function save() {
+        debugger;
+        $.ajax({
+            url: "https://localhost:44352/Login/insert",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(Login),
+            success: function (result) {
+                alert("success");
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        }).done(function () {
+            window.location.replace("http://www.w3schools.com");
+        });
+    }
+</script>
+
+}
